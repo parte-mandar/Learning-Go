@@ -3,6 +3,7 @@ package main
 import (
     "fmt"
     "example.com/greetings"
+	"example.com/greetings/package2"
 )
 
 func main() {
@@ -18,4 +19,9 @@ func main() {
 
 	fmt.Println(greetings.AddingNamaskaram("Pure", "Soul"))
 	// This returns content of namaskaram() in greetings module through different functn
+
+	// Same module but different package
+	fmt.Println(pkg2.Namaskaram("Pure Soul") + " (From package2)")
+	// Different package can have function with same name
+	// Package needs to be imported seperately
 }
