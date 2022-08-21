@@ -2,14 +2,32 @@ package main
 
 import (
     "fmt"
+	"log"
     "example.com/greetings"
 	"example.com/greetings/package2"
 )
 
 func main() {
+	// Set properties of the predefined Logger, including
+    // the log entry prefix and a flag to disable printing
+    // the time, source file, and line number.
+    log.SetPrefix("greetings: ")
+    log.SetFlags(0)
+
     // Get a greeting message and print it.
-    message := greetings.Hello("Gladys") // function from greetings module
-    fmt.Println(message)
+    message, err := greetings.Hello("M") // function from greetings module
+    // If an error was returned, print it to the console and
+    // exit the program.
+    if err != nil {
+        log.Fatal(err) // This stops the execution completely
+		// fmt.Println(err)
+    } else {
+		fmt.Println(message)
+	}
+
+	// If no error was returned, print the returned message
+    // to the console.
+	fmt.Println(message) // Here nothing prints if message is empty
 
 	// fmt.Println(greetings.namaskaram("Pure Soul")) 
 	// Above line gives an error as namaskaram() starts with small 'n' which is not accessible outside greetings module
